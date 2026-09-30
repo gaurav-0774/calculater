@@ -1,0 +1,297 @@
+/* =========================================================
+   CodeAlpha Task 2 — Calculator
+   Theme: light blue + white, clean and simple
+   ========================================================= */
+
+:root {
+  /* Page + surfaces */
+  --color-page-bg: #eaf3fb;
+  --color-surface: #ffffff;
+  --color-border: #d3e2ef;
+
+  /* Text */
+  --color-text-primary: #17324d;
+  --color-text-secondary: #6c869c;
+
+  /* Buttons */
+  --color-key-bg: #f4f9fd;
+  --color-key-bg-hover: #e6f1fa;
+  --color-key-muted-bg: #dcedfa;
+  --color-key-muted-bg-hover: #cde3f5;
+  --color-key-operator-bg: #3a86c8;
+  --color-key-operator-bg-hover: #2f70aa;
+  --color-key-equals-bg: #17527f;
+  --color-key-equals-bg-hover: #123f63;
+  --color-on-blue: #ffffff;
+
+  /* Feedback */
+  --color-error: #b3452c;
+
+  /* Shape + shadow */
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --shadow-soft: 0 10px 30px rgba(23, 50, 77, 0.12);
+
+  --font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--color-text-primary);
+}
+
+.page {
+  min-height: 100vh;
+  background-color: var(--color-page-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+}
+
+.app-wrapper {
+  width: 100%;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* =========================
+   Calculator card
+   ========================= */
+
+.calculator {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 20px;
+}
+
+.calculator-header {
+  margin-bottom: 12px;
+}
+
+.calculator-header h1 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.display {
+  background-color: var(--color-key-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px 14px;
+  margin-bottom: 16px;
+  text-align: right;
+  overflow: hidden;
+}
+
+.display-expression {
+  min-height: 1.2em;
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.display-current {
+  font-size: clamp(1.6rem, 6vw, 2.4rem);
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+}
+
+.display-current.is-error {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-error);
+  white-space: normal;
+}
+
+/* =========================
+   Keypad
+   ========================= */
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  background-color: var(--color-key-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 14px 0;
+  min-height: 50px;
+  cursor: pointer;
+  transition: background-color 0.12s ease, transform 0.05s ease;
+}
+
+.key:hover {
+  background-color: var(--color-key-bg-hover);
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key:focus-visible {
+  outline: 2px solid var(--color-key-operator-bg);
+  outline-offset: 2px;
+}
+
+.key--muted {
+  background-color: var(--color-key-muted-bg);
+  color: var(--color-text-primary);
+}
+
+.key--muted:hover {
+  background-color: var(--color-key-muted-bg-hover);
+}
+
+.key--operator {
+  background-color: var(--color-key-operator-bg);
+  border-color: var(--color-key-operator-bg);
+  color: var(--color-on-blue);
+  font-weight: 600;
+}
+
+.key--operator:hover {
+  background-color: var(--color-key-operator-bg-hover);
+}
+
+.key--equals {
+  background-color: var(--color-key-equals-bg);
+  border-color: var(--color-key-equals-bg);
+  color: var(--color-on-blue);
+  font-weight: 600;
+}
+
+.key--equals:hover {
+  background-color: var(--color-key-equals-bg-hover);
+}
+
+/* =========================
+   History panel
+   ========================= */
+
+.history {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 16px 18px;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.history-header h2 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.history-clear {
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--color-key-operator-bg);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+}
+
+.history-clear:hover {
+  text-decoration: underline;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 160px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-item {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  background-color: var(--color-key-bg);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.history-empty {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* =========================
+   Responsive breakpoints
+   ========================= */
+
+/* Tablet: slightly larger than mobile, still stacked */
+@media (min-width: 600px) {
+  .app-wrapper {
+    max-width: 360px;
+  }
+
+  .calculator {
+    padding: 24px;
+  }
+
+  .key {
+    min-height: 54px;
+    font-size: 1.1rem;
+  }
+}
+
+/* Desktop: calculator and history sit side by side */
+@media (min-width: 900px) {
+  .app-wrapper {
+    max-width: none;
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .calculator {
+    width: 380px;
+    flex-shrink: 0;
+  }
+
+  .history {
+    width: 260px;
+  }
+
+  .history-list {
+    max-height: 320px;
+  }
+}

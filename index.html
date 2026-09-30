@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculator — CodeAlpha Task 2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="page">
+
+    <div class="app-wrapper">
+
+      <!-- Calculator -->
+      <section class="calculator" aria-label="Calculator">
+
+        <header class="calculator-header">
+          <h1>Calculator</h1>
+        </header>
+
+        <div class="display" id="display">
+          <div class="display-expression" id="expression"></div>
+          <div class="display-current" id="current">0</div>
+        </div>
+
+        <div class="keypad">
+
+          <button type="button" class="key key--muted" data-action="clear">AC</button>
+          <button type="button" class="key key--muted" data-action="delete">DEL</button>
+          <button type="button" class="key key--muted" data-action="percent">%</button>
+          <button type="button" class="key key--operator" data-action="divide">÷</button>
+
+          <button type="button" class="key" data-number="7">7</button>
+          <button type="button" class="key" data-number="8">8</button>
+          <button type="button" class="key" data-number="9">9</button>
+          <button type="button" class="key key--operator" data-action="multiply">×</button>
+
+          <button type="button" class="key" data-number="4">4</button>
+          <button type="button" class="key" data-number="5">5</button>
+          <button type="button" class="key" data-number="6">6</button>
+          <button type="button" class="key key--operator" data-action="subtract">−</button>
+
+          <button type="button" class="key" data-number="1">1</button>
+          <button type="button" class="key" data-number="2">2</button>
+          <button type="button" class="key" data-number="3">3</button>
+          <button type="button" class="key key--operator" data-action="add">+</button>
+
+          <button type="button" class="key key--muted" data-action="sign">±</button>
+          <button type="button" class="key" data-number="0">0</button>
+          <button type="button" class="key" data-action="decimal">.</button>
+          <button type="button" class="key key--equals" data-action="equals">=</button>
+
+        </div>
+      </section>
+
+      <!-- History -->
+      <aside class="history" aria-label="Calculation history">
+        <div class="history-header">
+          <h2>History</h2>
+          <button type="button" class="history-clear" id="clearHistory">Clear</button>
+        </div>
+        <ul class="history-list" id="historyList">
+          <li class="history-empty" id="historyEmpty">No calculations yet</li>
+        </ul>
+      </aside>
+
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
